@@ -31,13 +31,13 @@ export default function Page() {
             <CardHeader>
               <div className="flex flex-wrap items-center gap-4 py-2">
                 <h1 className="flex-1 text-4xl font-semibold">Income</h1>
-                <span className="text-2xl font-light">R$: 4250,92</span>
                 <ArrowUpIcon className="w-10 h-10 text-green-500" />
+                <span className="text-2xl font-light">R$: 4250,92</span>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="pt-4 border-t border-border space-y-2">
-                <h2 className="text-lg">Recent transactions</h2>
+                <p className="text-sm">Past 7 days</p>
                 <div className="w-full space-y-2">
                   <div className="flex justify-between gap-2 border border-border rounded p-2">
                     <p>R$: 250,09</p>
@@ -68,13 +68,13 @@ export default function Page() {
             <CardHeader>
               <div className="flex flex-wrap items-center gap-4 py-2">
                 <h1 className="flex-1 text-4xl font-semibold">Expense</h1>
-                <span className="text-2xl font-light">R$: 4250,92</span>
                 <ArrowDownIcon className="w-10 h-10 text-red-500" />
+                <span className="text-2xl font-light">R$: 4250,92</span>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="pt-4 border-t border-border space-y-2">
-                <h2 className="text-lg">Recent transactions</h2>
+              <p className="text-sm">Past 7 days</p>
                 <div className="w-full space-y-2">
                   <div className="flex justify-between gap-2 border border-border rounded p-2">
                     <p>R$: 250,09</p>
@@ -103,7 +103,11 @@ export default function Page() {
           </Card>
         </div>
         <div>
-          <Card>
+          <Card className="relative overflow-hidden">
+            <div className="z-10 absolute backdrop-blur-sm left-0 top-0 w-full h-[580px] flex flex-col items-center justify-center gap-4">
+              <p>This feature is not available on Free Tier</p>
+              <Button>Unlock with PRO</Button>
+            </div>
             <CardHeader>
               <CardTitle>Chart</CardTitle>
               <CardDescription>Income/Expense</CardDescription>

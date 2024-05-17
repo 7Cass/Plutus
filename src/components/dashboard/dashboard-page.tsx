@@ -20,7 +20,7 @@ export function DashboardPageHeader({
   return (
     <header
       className={cn([
-        "flex items-center justify-between px-6 py-4 border-b border-border",
+        "flex items-center justify-between px-6 py-4 h-20 max-h-20 border-b border-border",
         className,
       ])}
     >
