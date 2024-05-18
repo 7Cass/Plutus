@@ -34,7 +34,7 @@ model Transaction {
   userId      String
   user        User            @relation(fields: [userId], references: [id])
   date        DateTime
-  amount      Float
+  amount      Int
   type        TransactionType // "income" or "expense"
   categoryId  Int
   category    Category        @relation(fields: [categoryId], references: [id])
