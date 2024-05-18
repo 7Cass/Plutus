@@ -23,6 +23,7 @@ import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
 import { UserDropwdown } from "./user-dropdown";
 import { Logo } from "@/components/logo";
+import { Badge } from "@/components/ui/badge";
 
 type MainSidebarProps = {
   user: Session["user"];
@@ -61,6 +62,7 @@ export function MainSidebar({ user }: MainSidebarProps) {
             >
               <BarChartIcon className="w-4 h-4 mr-3" />
               Analytics
+              <Badge className="text-xs px-1.5 ml-3">PRO</Badge>
             </DashboardSidebarNavLink>
             <DashboardSidebarNavLink
               href="/app/settings"
