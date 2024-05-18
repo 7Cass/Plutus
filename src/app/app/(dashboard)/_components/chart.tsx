@@ -1,76 +1,85 @@
-'use client'
+"use client";
 
-import { ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from "recharts";
+import {
+  ResponsiveContainer,
+  LineChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Line,
+} from "recharts";
 
 const data = [
   {
-    name: 'Jan',
+    name: "Jan",
     expense: 4000,
     income: 2400,
     amt: 2400,
   },
   {
-    name: 'Fev',
+    name: "Fev",
     expense: 3000,
     income: 1398,
     amt: 2210,
   },
   {
-    name: 'Mar',
+    name: "Mar",
     expense: 2000,
     income: 9800,
     amt: 2290,
   },
   {
-    name: 'Abr',
+    name: "Abr",
     expense: 2780,
     income: 3908,
     amt: 2000,
   },
   {
-    name: 'Mai',
+    name: "Mai",
     expense: 1890,
     income: 4800,
     amt: 2181,
   },
   {
-    name: 'Jun',
+    name: "Jun",
     expense: 2390,
     income: 3800,
     amt: 2500,
   },
   {
-    name: 'Jul',
+    name: "Jul",
     expense: 3490,
     income: 4300,
     amt: 2100,
   },
   {
-    name: 'Ago',
+    name: "Ago",
     expense: 3490,
     income: 4300,
     amt: 2100,
   },
   {
-    name: 'Set',
+    name: "Set",
     expense: 3490,
     income: 4300,
     amt: 2100,
   },
   {
-    name: 'Out',
+    name: "Out",
     expense: 3490,
     income: 4300,
     amt: 2100,
   },
   {
-    name: 'Nov',
+    name: "Nov",
     expense: 3490,
     income: 4300,
     amt: 2100,
   },
   {
-    name: 'Dez',
+    name: "Dez",
     expense: 3490,
     income: 4300,
     amt: 2100,
@@ -79,9 +88,11 @@ const data = [
 
 export function Chart() {
   return (
-    <ResponsiveContainer width="100%" height={450}>
-      <LineChart data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+    <ResponsiveContainer width="100%" height={320}>
+      <LineChart
+        data={data}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -91,5 +102,5 @@ export function Chart() {
         <Line type="monotone" dataKey="income" stroke="#82ca9d" />
       </LineChart>
     </ResponsiveContainer>
-  )
+  );
 }

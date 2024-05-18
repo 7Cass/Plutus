@@ -4,7 +4,13 @@ import {
   DashboardPageHeaderTitle,
   DashboardPageMain,
 } from "@/components/dashboard/dashboard-page";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Chart } from "./_components/chart";
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { Badge } from "@/components/ui/badge";
@@ -19,7 +25,7 @@ export default function Page() {
         <DashboardPageHeaderTitle>Dashboard</DashboardPageHeaderTitle>
       </DashboardPageHeader>
 
-      <DashboardPageMain className="grid gap-6">
+      <DashboardPageMain className="grid gap-6 h-[calc(100vh_-_80px)] overflow-y-auto">
         <div className="grid grid-cols-4 gap-6">
           <Card className="col-span-2">
             <CardHeader>

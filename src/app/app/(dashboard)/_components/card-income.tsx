@@ -8,39 +8,42 @@ export function CardIncome() {
     <Card className="col-span-1">
       <CardHeader>
         <div className="flex items-center justify-between gap-2">
-          <h1 className="text-4xl font-semibold">Income</h1>
-          <ArrowUpIcon className="w-10 h-10 text-green-500" />
+          <h1 className="text-2xl font-semibold">Income</h1>
+          <ArrowUpIcon className="w-8 h-8 text-green-500" />
         </div>
-        <p className="text-2xl font-light pt-2">R$: 4250,92</p>
+        <p className="text-md font-light">R$: 4250,92</p>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent>
         <div className="pt-4 border-t border-border space-y-2">
-          <p className="text-sm">Past 7 days</p>
+          <p className="text-xs">Recent transactions</p>
           <div className="w-full space-y-2">
-            <div className="flex justify-between gap-2 border border-border rounded p-2">
-              <p>R$: 250,09</p>
-              <p>12/04/2023</p>
-              <Badge>Store</Badge>
+            <div className="flex justify-between items-center gap-4 border border-border rounded px-2 py-1.5">
+              <small className="text-xs">R$: 250,09</small>
+              <small className="text-xs">12/04/2023</small>
+              <div className="flex-1 flex justify-end">
+                <Badge>Store</Badge>
+              </div>
             </div>
-            <div className="flex justify-between gap-2 border border-border rounded p-2">
-              <p>R$: 250,09</p>
-              <p>12/04/2023</p>
-              <Badge>Market</Badge>
+            <div className="flex justify-between items-center gap-4 border border-border rounded px-2 py-1.5">
+              <small className="text-xs">R$: 250,09</small>
+              <small className="text-xs">12/04/2023</small>
+              <div className="flex-1 flex justify-end">
+                <Badge>Market</Badge>
+              </div>
             </div>
-            <div className="flex justify-between gap-2 border border-border rounded p-2">
-              <p>R$: 250,09</p>
-              <p>12/04/2023</p>
-              <Badge>Steam</Badge>
-            </div>
-            <div className="flex justify-between gap-2 border border-border rounded p-2">
-              <p>R$: 250,09</p>
-              <p>12/04/2023</p>
-              <Badge>Salary</Badge>
+            <div className="flex justify-between items-center gap-4 border border-border rounded px-2 py-1.5">
+              <small className="text-xs">R$: 250,09</small>
+              <small className="text-xs">12/04/2023</small>
+              <div className="flex-1 flex justify-end">
+                <Badge>Steam</Badge>
+              </div>
             </div>
           </div>
-          <Button variant="secondary" className="w-full">See more</Button>
+          <Button variant="secondary" className="w-full">
+            See more
+          </Button>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
