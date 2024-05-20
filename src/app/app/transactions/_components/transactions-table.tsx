@@ -41,8 +41,9 @@ import { useState } from "react";
 import { TransactionWithRelation } from "../types";
 import { CreateTransactionSheet } from "./create-transaction-sheet";
 import { Category } from "@/types/category";
+import { Transaction } from "@/types/transaction";
 
-const columns: ColumnDef<TransactionWithRelation>[] = [
+const columns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => {
@@ -193,7 +194,7 @@ const columns: ColumnDef<TransactionWithRelation>[] = [
 ];
 
 type TransactionTableProps = {
-  transactions: TransactionWithRelation[];
+  transactions: Transaction[];
   categories: Category[];
 };
 

@@ -6,13 +6,14 @@ import { TransactionWithRelation } from "./types";
 import { z } from "zod";
 import { createTransactionSchema } from "./schemas";
 import { Category } from "@/types/category";
+import { Transaction } from "@/types/transaction";
 
 type ApiResponse<D, E> = {
     error: E | null,
     data: D | null
 };
 
-export async function getUserTransactions(): Promise<ApiResponse<TransactionWithRelation[], string>> {
+export async function getUserTransactions(): Promise<ApiResponse<Transaction[], string>> {
     const session = await auth();
 
     if (!session?.user?.id) {

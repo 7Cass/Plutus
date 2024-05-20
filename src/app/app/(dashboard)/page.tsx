@@ -12,13 +12,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Chart } from "./_components/chart";
-import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CardIncome } from "./_components/card-income";
-import { CardOutcome } from "./_components/card-outcome";
+import { CardExpense } from "./_components/card-outcome";
+import { getUserTransactions } from "../transactions/actions";
+import { separateIncomeAndExpense } from "@/lib/separate-income-and-expense";
 
-export default function Page() {
+export default async function Page() {
+  const transactions = await getUserTransactions();
+
+  if (!transactions.data) {
+    // todo: add error toaster
+    return;
+  }
+
+  const { expense, income } = separateIncomeAndExpense(transactions.data);
+  
   return (
     <DashboardPage>
       <DashboardPageHeader>
@@ -35,8 +44,8 @@ export default function Page() {
               </CardContent>
             </CardHeader>
           </Card>
-          <CardIncome />
-          <CardOutcome />
+          <CardIncome income={income} />
+          <CardExpense expense={expense}/>
         </div>
         <div>
           <Card className="relative overflow-hidden">

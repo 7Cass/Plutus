@@ -1,9 +1,28 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/format-currency";
+import { formatDate } from "@/lib/format-date";
+import { Transaction } from "@/types/transaction";
 import { ArrowDownIcon } from "@radix-ui/react-icons";
 
-export function CardOutcome() {
+type CardExpenseProps = {
+  expense: Transaction[];
+}
+
+export function CardExpense({ expense }: CardExpenseProps) {
+
+  if (expense.length === 0) {
+    return (
+      <Card className="col-span-1">
+        <CardContent className="flex flex-col items-center justify-center h-full gap-2">
+          <h1 className="text-muted-foreground text-center">No expenses yet.</h1>
+          <p className="text-muted-foreground text-center">Go to transactions page and create a new expense transaction</p>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
     <Card className="col-span-1">
       <CardHeader>
@@ -11,33 +30,21 @@ export function CardOutcome() {
           <h1 className="text-2xl font-semibold">Expense</h1>
           <ArrowDownIcon className="w-8 h-8 text-red-500" />
         </div>
-        <p className="text-md font-light pt-2">R$: 4250,92</p>
+        <p className="text-md font-light pt-2">{formatCurrency(expense.reduce((prev, curr) => prev + curr.amount, 0), 'BRL')}</p>
       </CardHeader>
       <CardContent>
         <div className="pt-4 border-t border-border space-y-2">
           <p className="text-xs">Recent transactions</p>
           <div className="w-full space-y-2">
-            <div className="flex justify-between items-center gap-4 border border-border rounded px-2 py-1.5">
-              <small className="text-xs">R$: 250,09</small>
-              <small className="text-xs">12/04/2023</small>
-              <div className="flex-1 flex justify-end">
-                <Badge>Store</Badge>
-              </div>
-            </div>
-            <div className="flex justify-between items-center gap-4 border border-border rounded px-2 py-1.5">
-              <small className="text-xs">R$: 250,09</small>
-              <small className="text-xs">12/04/2023</small>
-              <div className="flex-1 flex justify-end">
-                <Badge>Market</Badge>
-              </div>
-            </div>
-            <div className="flex justify-between items-center gap-4 border border-border rounded px-2 py-1.5">
-              <small className="text-xs">R$: 250,09</small>
-              <small className="text-xs">12/04/2023</small>
-              <div className="flex-1 flex justify-end">
-                <Badge>Steam</Badge>
-              </div>
-            </div>
+            {expense.map((transaction, index) => (
+                <div key={index} className="flex justify-between items-center gap-4 border border-border rounded px-2 py-1.5">
+                  <small className="text-xs">{formatCurrency(transaction.amount, 'BRL')}</small>
+                  <small className="text-xs">{formatDate(transaction.date)}</small>
+                  <div className="flex-1 flex justify-end">
+                    <Badge variant={transaction.category.isDefault ? 'default' : 'secondary'}>{transaction.category.name}</Badge>
+                  </div>
+                </div>
+              ))}
           </div>
           <Button variant="secondary" className="w-full">
             See more
