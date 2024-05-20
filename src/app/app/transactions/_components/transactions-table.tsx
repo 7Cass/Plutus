@@ -39,6 +39,8 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 import { TransactionWithRelation } from "../types";
+import { CreateTransactionSheet } from "./create-transaction-sheet";
+import { Category } from "@/types/category";
 
 const columns: ColumnDef<TransactionWithRelation>[] = [
   {
@@ -192,9 +194,13 @@ const columns: ColumnDef<TransactionWithRelation>[] = [
 
 type TransactionTableProps = {
   transactions: TransactionWithRelation[];
+  categories: Category[];
 };
 
-export function TransactionsTable({ transactions }: TransactionTableProps) {
+export function TransactionsTable({
+  transactions,
+  categories,
+}: TransactionTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -216,19 +222,12 @@ export function TransactionsTable({ transactions }: TransactionTableProps) {
   return (
     <div className="space-y-4 w-full">
       <div className="flex gap-4">
-        <Input
-          disabled
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-        />
-
-        <Button>
-          <PlusIcon className="w-4 h-4 mr-2" />
-          New Transaction
-        </Button>
+        <CreateTransactionSheet categories={categories}>
+          <Button variant="outline">
+            <PlusIcon className="w-4 h-4 mr-2" />
+            New Transaction
+          </Button>
+        </CreateTransactionSheet>
       </div>
 
       <Table className="border border-r">
