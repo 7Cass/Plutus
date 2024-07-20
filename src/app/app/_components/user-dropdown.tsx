@@ -27,7 +27,7 @@ export function UserDropwdown({ user }: UserDropdownProps) {
           className="relative h-8 flex items-center justify-between w-full px-0 space-x-2"
         >
           <Avatar className="h-8 w-8">
-            <AvatarImage src="/avatars/01.png" alt="user" />
+            <AvatarImage src={user?.image || ""} alt="user" />
             <AvatarFallback>{getUsernameInitials(user?.name)}</AvatarFallback>
           </Avatar>
 

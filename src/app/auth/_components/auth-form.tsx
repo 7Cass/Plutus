@@ -6,18 +6,15 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";
+import { Separator } from "@/components/ui/separator";
+import { ShadowIcon } from "@radix-ui/react-icons";
 
 export function AuthForm() {
   const form = useForm();
 
   const handleSubmit = form.handleSubmit(async (data) => {
     try {
-      await signIn("nodemailer", { email: data.email, redirect: false });
-      toast({
-        title: "Magic Link Sent",
-        description:
-          "A magic link has been sent to your email. Click the link to complete your login.",
-      });
+      await signIn("google");
     } catch (error) {
       toast({
         variant: "destructive",
@@ -33,29 +30,23 @@ export function AuthForm() {
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-bold">Login</h1>
           <p className="text-gray-500 dark:text-gray-400">
-            Enter your email below and we&apos;ll send you a magic link to sign
-            in.
+            This page is under construction. Currently, we are only supporting
+            login via Google.
           </p>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <Label className="sr-only" htmlFor="email">
-              Email
-            </Label>
-            <Input
-              id="email"
-              placeholder="Enter your email"
-              required
-              type="email"
-              {...form.register("email")}
-            />
-          </div>
+        <form
+          onSubmit={handleSubmit}
+          className="flex gap-2 items-center justify-center"
+        >
           <Button
             className="w-full"
             type="submit"
             disabled={form.formState.isSubmitting}
           >
-            {form.formState.isSubmitting ? "Sending..." : "Send Magic Link"}
+            Login with Google
+          </Button>
+          <Button className="w-full" type="submit" disabled>
+            Login with Github
           </Button>
         </form>
       </div>

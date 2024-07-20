@@ -32,6 +32,8 @@ type MainSidebarProps = {
 export function MainSidebar({ user }: MainSidebarProps) {
   const pathname = usePathname();
 
+  console.log(user);
+
   const isActive = (path: string) => {
     return pathname === path;
   };
@@ -39,7 +41,6 @@ export function MainSidebar({ user }: MainSidebarProps) {
   return (
     <DashboardSidebar>
       <DashboardSidebarHeader className="flex items-center gap-4">
-        <Logo className="bg-primary" />
         <DashboardSidebarTitle>Plutus</DashboardSidebarTitle>
       </DashboardSidebarHeader>
       <DashboardSidebarMain className="flex flex-col flex-grow">

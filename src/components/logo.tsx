@@ -10,8 +10,8 @@ export function Logo({ className, children }: LogoGenericProps) {
   return (
     <div
       className={cn([
-        className,
         "h-8 w-8 flex items-center justify-center rounded-md",
+        className,
       ])}
     >
       {children && children}

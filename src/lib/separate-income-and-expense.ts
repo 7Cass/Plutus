@@ -10,5 +10,16 @@ export function separateIncomeAndExpense(transactions: Transaction[]) {
   const income = transactions.filter(transaction => transaction.type === 'INCOME').slice(0, 5);
   const expense = transactions.filter(transaction => transaction.type === 'EXPENSE').slice(0, 5);
 
-  return { income, expense };
+  const categoriesRating = transactions.reduce((acc: any, transaction) => {
+    const category = transaction.category;
+    const existingCategory = acc.find((c: any) => c.name === category.name);
+    if (existingCategory) {
+      existingCategory.size++;
+    } else {
+      acc.push({ name: category.name, size: 1 });
+    }
+    return acc;
+  }, []).sort((a: any, b: any) => b.size - a.size);
+
+  return { categoriesRating, income, expense };
 };
